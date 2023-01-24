@@ -1,4 +1,4 @@
-import { EOL } from 'os';
+const os = require('os');
 
 function run()
 {
@@ -33,7 +33,7 @@ function run()
     
     const newVersion = versionSplit.join('.');
     console.log(`Version: ${newVersion}`)
-    process.stdout.write(`::set-output name=VERSION::${newVersion}` + EOL)
+    process.stdout.write(`::set-output name=VERSION::${newVersion}` + os.EOL)
 }
 
 run();
