@@ -28,7 +28,7 @@ function run()
 
     versionSplit[positionToIncrement] = Number(versionSplit[positionToIncrement]) + 1;
 
-    for (var i = positionToIncrement + 1; i < 4; i++){
+    for (var i = positionToIncrement + 1; i < versionSplit.length; i++){
         versionSplit[i] = 0;
     }
     
