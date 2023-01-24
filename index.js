@@ -9,9 +9,9 @@ function run()
     console.log(`VERSION: ${version}`);
     console.log(`INCREMENT_POSITION: ${position}`);
     
-    const versionRegex = new RegExp('\d+(\.\d+){0,3}');
+    const versionPattern = '^\d+(\.\d+){0,3}$';
 
-    if (!versionRegex.test(version))
+    if (!versionPattern.test(version))
         throw new Error(`Invalid version provided: ${version}`);
     
     const positionToIncrement = 2;
