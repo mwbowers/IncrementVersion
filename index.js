@@ -3,7 +3,11 @@ const os = require('os');
 
 function run()
 {
+    console.log(`VERSION: ${process.env.VERSION}`);
+    console.log(`INCREMENT_POSITION: ${process.env.INCREMENT_POSITION}`);
+    
     const versionRegex = new RegExp('^\d+(\.\d+){0,3}$');
+
     if (!versionRegex.test(process.env.VERSION))
         throw new Error(`Invalid version provided: ${process.env.VERSION}`);
     
