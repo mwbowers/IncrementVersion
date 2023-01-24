@@ -1,5 +1,4 @@
-const fs = require('fs');
-const os = require('os');
+import { EOL } from 'os';
 
 function run()
 {
@@ -9,17 +8,17 @@ function run()
     console.log(`VERSION: ${version}`);
     console.log(`INCREMENT_POSITION: ${position}`);
     
-    const versionPattern = '^\d+(\.\d+){0,3}$';
+    const versionRegex = /^\d+(\.\d+){0,3}$/;
 
-    if (!versionPattern.test(version))
+    if (!versionRegex.test(version))
         throw new Error(`Invalid version provided: ${version}`);
     
-    const positionToIncrement = 2;
+    let positionToIncrement = 2;
 
     if (position)
         positionToIncrement = position - 1;
 
-    const versionSplit = process.env.VERSION.split('.');
+    const versionSplit = version.split('.');
 
     if (position && (positionToIncrement < 0 || positionToIncrement > 3))
         throw new Error('Position to increment must be between 1 and 4.');
@@ -34,7 +33,7 @@ function run()
     
     const newVersion = versionSplit.join('.');
     console.log(`Version: ${newVersion}`)
-    process.stdout.write(`::set-output name=VERSION::${newVersion}` + os.EOL)
+    process.stdout.write(`::set-output name=VERSION::${newVersion}` + EOL)
 }
 
 run();
