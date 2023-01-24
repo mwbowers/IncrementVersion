@@ -8,15 +8,16 @@ function run()
     console.log(`VERSION: ${version}`);
     console.log(`INCREMENT_POSITION: ${position}`);
     
-    const versionRegex = /^\d+(\.\d+){0,3}$/;
-
-    if (!versionRegex.test(version))
+    if (!/^\d+(\.\d+){0,3}$/.test(version))
         throw new Error(`Invalid version provided: ${version}`);
+
+    if (position && !/^\d$/.test(position))
+        throw new Error(`Invalid position provided: ${position}`);
     
     let positionToIncrement = 2;
 
     if (position)
-        positionToIncrement = position - 1;
+        positionToIncrement = Number(position) - 1;
 
     const versionSplit = version.split('.');
 
@@ -25,7 +26,7 @@ function run()
     if (position && position > versionSplit.length)
         throw new Error(`Invalid increment position specified. Position specified, ${position}, is outside the bounds of the specified version, ${version}.`);
 
-    versionSplit[positionToIncrement] = versionSplit[positionToIncrement] + 1;
+    versionSplit[positionToIncrement] = Number(versionSplit[positionToIncrement]) + 1;
 
     for (var i = positionToIncrement + 1; i < 4; i++){
         versionSplit[i] = 0;
