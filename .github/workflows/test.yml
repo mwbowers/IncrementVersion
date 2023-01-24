@@ -1,0 +1,45 @@
+name: "Test the action"
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Increment Version
+      uses: ./
+      id: increment_version
+      with:
+        VERSION: 1.2.3.4
+        
+    - name: Increment Version 1
+      uses: ./
+      id: increment_version1
+      with:
+        VERSION: 1.2.3.4
+        INCREMENT_POSITION : 1
+
+    - name: Increment Version 2
+      uses: ./
+      id: increment_version2
+      with:
+        VERSION: 1.2.3.4
+        INCREMENT_POSITION : 2
+
+    - name: Increment Version 3
+      uses: ./
+      id: increment_version3
+      with:
+        VERSION: 1.2.3.4
+        INCREMENT_POSITION : 3
+        
+    - name: Increment Version 4
+      uses: ./
+      id: increment_version4
+      with:
+        VERSION: 1.2.3.4
+        INCREMENT_POSITION : 4

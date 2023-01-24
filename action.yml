@@ -1,0 +1,22 @@
+name: Increment Version
+author: Matt Bowers
+description: Increments the version number provided according to increment specified 
+
+inputs:
+    VERSION:
+        description: Version to be incremented
+        required: true
+    INCREMENT_POSITION:
+        description: Position of the version number to increment. (Major.Minor.Build.Revision). 1 for Major, 2 for Major.Minor, 3 for Major.Minor.Build, 4 for Major.Minor.Build.Revision.  If not provided, defaults to Build.
+        required: false
+
+outputs:
+    VERSION:
+        description: The updated version
+runs:
+    using: node12
+    main: index.js
+    
+branding:
+    icon: activity
+    color: gray-dark
